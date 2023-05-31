@@ -117,7 +117,8 @@ def form_vs_lemma_stats(df):
   
   return stats[['count','percent']]
 
-form_vs_lemma_stats(ru_data)
+form_vs_lemma_stats(doc_ru)
+form_vs_lemma_stats(doc_de)
 
 #task 8 
 from statistics import median
