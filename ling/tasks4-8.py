@@ -67,8 +67,7 @@ def make_ud(langcode, text):
   doc = nlp(text)
   with open(f"{langcode}.conllu", 'w') as f:
     f.write(doc._.conll_str)
-  
-  #  буду потом использовать
+ 
   return doc._.conll_pd
 
 nlp = spacy_udpipe.load('ru')
