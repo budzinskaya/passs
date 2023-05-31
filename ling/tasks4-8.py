@@ -137,3 +137,40 @@ def find_median(sent_lengths):
 
 sent_medium(text_de)
 sent_medium(text_ru)
+# нехорошо, конечно, что файлы так же называются, ну ладно...получившиеся деревья лежат в папке в формате svg 
+doc_ru = make_ud('ru','Он благополучно избегнул встречи с своею хозяйкой на лестнице.')
+doc_de = make_ud('de','Es gelang ihm, eine Begegnung mit seiner Wirtin auf der Treppe zu vermeiden.')
+# мне разметка UDPIPE очень нравится, ставлю лайк 
+
+#task 9
+!pip install pyconll
+
+import pyconll
+from collections import Counter
+
+text = pyconll.load_from_file('ru.conllu')
+rel = set()
+obj = {}
+for sentence in text:
+    for token in sentence:
+        obj[token.deprel]=[]
+# print(obj)
+
+for sentence in text:
+    for token in sentence:
+        obj[token.deprel].append(token.lemma)
+
+# print(obj)
+
+for k in obj:
+  c = Counter(obj[k]).most_common(3)
+  print(k, c)
+    
+''' у меня почему-то когда я в цикл добавила 
+  if k == 'punct':
+    continue
+ коллаб скрашился (несколько раз подряд)
+я не понимаю, почему от такой безобидной операции... 
+'''
+
+# а 10 задачу я не успею решить :) ну ничего 
